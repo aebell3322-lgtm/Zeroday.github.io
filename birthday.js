@@ -143,33 +143,12 @@ async function initAudio(){
     });
   }
 
-  // Attempt autoplay (many mobiles block audible autoplay). If blocked or no source, show overlay prompting user.
+  // Attempt autoplay (many mobiles block audible autoplay). Do not show any overlay; fail silently.
   setTimeout(async ()=>{
-    const overlay = document.getElementById('musicOverlay');
-    const overlayBtn = document.getElementById('overlayPlay');
-
-    // If no song found yet, prompt user to select one
-    if (!audioEl.src){
-      if (overlay && overlayBtn){
-        overlay.style.display = 'flex'; overlay.setAttribute('aria-hidden','false');
-        overlayBtn.addEventListener('click', ()=> audioInput.click(), { once:true });
-      }
-      return;
-    }
-
     try{
       await audioEl.play();
-      // played successfully
     }catch(err){
-      // autoplay blocked -> show overlay with a play button
-      if (overlay && overlayBtn){
-        overlay.style.display = 'flex'; overlay.setAttribute('aria-hidden','false');
-        overlayBtn.addEventListener('click', ()=>{
-          audioEl.play().then(()=>{
-            overlay.style.display='none'; overlay.setAttribute('aria-hidden','true');
-          }).catch(()=>{});
-        },{ once:true });
-      }
+      // Autoplay blocked on some devices; intentionally do nothing (no overlay).
     }
   }, 300);
 } 
