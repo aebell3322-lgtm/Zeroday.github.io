@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>สุขสันต์วันเกิด 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#ff6b86">
+</head>
+<body>
+  <main class="card" aria-label="บอกรักวันเกิด" role="main">
+
+    <div class="birthday-top">
+      <!-- placeholder image -> replaced by birthday.js if photo is found -->
+      <div id="photoWrap" class="birthday-photo" aria-hidden="true">
+        <!-- inline cake SVG as fallback -->
+        <svg viewBox="0 0 120 120" class="cake-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="gCake" x1="0" x2="1">
+              <stop offset="0" stop-color="#ffd1dc"/>
+              <stop offset="1" stop-color="#ff9aa2"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(60,60)">
+            <rect x="-36" y="-10" width="72" height="34" rx="6" fill="#fff5f6" stroke="#ffb3c0" stroke-width="2"/>
+            <rect x="-32" y="-30" width="64" height="24" rx="6" fill="url(#gCake)"/>
+            <g>
+              <path d="M-10 -34 C-8 -48 8 -48 10 -34" fill="#fff"/>
+              <rect x="-6" y="-38" width="12" height="8" rx="3" fill="#ffd1dc"/>
+              <circle cx="0" cy="-44" r="2.5" fill="#fff5f6"/>
+            </g>
+            <text y="40" text-anchor="middle" font-size="10" fill="#6b5560" font-weight="600">20/01/2069</text>
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="title">สุขสันต์วันเกิดนะที่รัก 🎂</h1>
+      <p class="subtitle">วันที่: <strong>21/01/2069</strong></p>
+    </div>
+
+    <div class="message" id="bdayMessage">จัสมินน่ารักที่สุดในโลกเลย🧸💖</div>
+
+    <div class="actions">
+      <button id="btn-send" class="btn">รับคำอวยพร 💌</button>
+    </div>
+
+    <div id="floating" class="floating-hearts"></div>
+    <div id="downloadLinks" class="downloads" style="text-align:center; margin-top:10px; display:none" aria-live="polite"></div>
+
+    <audio id="bgAudio" preload="auto"></audio>
+
+    <!-- Hidden inputs to let user pick local photo or audio as fallback -->
+    <input id="photoInput" type="file" accept="image/*" style="display:none">
+    <input id="audioInput" type="file" accept="audio/*" style="display:none">
+
+    <div id="confetti-wrap" aria-hidden="true"></div>
+
+    <!-- Autoplay blocked overlay (hidden by default) -->
+    <div id="musicOverlay" aria-hidden="true" style="display:none">
+      <div class="overlay-card">
+        <div style="font-weight:700; font-size:18px; margin-bottom:6px">แตะเพื่อฟังเพลง</div>
+        <div style="color:#6b5560; font-size:14px">บางอุปกรณ์ต้องการการยืนยันก่อนเล่นเสียง</div>
+        <button id="overlayPlay" class="btn" style="margin-top:10px">เล่นเพลงให้ฟัง 🎵</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- libraries for client-side capture and GIF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+
+  <script src="birthday.js" defer></script>
+</body>
+</html> 
